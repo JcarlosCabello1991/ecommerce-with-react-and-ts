@@ -11,7 +11,7 @@ const DivFooterCard = styled.div`
 `
 const Div = styled.div`
 display: grid;
-grid-template-columns: repeat(4,1fr);
+grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));//4,1fr
 justify-content: center;
 align-items: center;
 width: 80%;
