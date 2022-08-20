@@ -96,7 +96,7 @@ const DivFlexBeetweenCounterTrash = styled.div`
     padding-right: 2rem;
 `
 const DivHeightInfo = styled.div`
-    height: 52em;
+    height: 58em;
     @media (max-width:400px){
         height: 27rem;
     }
