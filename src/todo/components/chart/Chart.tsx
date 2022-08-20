@@ -14,7 +14,13 @@ const DivContainerChart = styled.div`
     margin-left: -27rem;
     margin-top: 1.95rem;
     box-shadow: 0.625rem 0.625rem 0.625rem 0.9375rem rgb(0 0 0 / 5%);
-
+    @media (max-width:400px){
+        width: 25rem;
+        margin-left: -20rem;
+        margin-top: 1.95rem;
+        position: fixed;
+        height: 80%;
+    }
 `
 const DivChart = styled.div`
     position: absolute;
@@ -23,6 +29,7 @@ const DivChart = styled.div`
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: 1rem;
+    height: 97%;
 `
 const DivHeader = styled.div`
     display: flex;
@@ -90,6 +97,9 @@ const DivFlexBeetweenCounterTrash = styled.div`
 `
 const DivHeightInfo = styled.div`
     height: 52em;
+    @media (max-width:400px){
+        height: 27rem;
+    }
 `
 const SpanPrice = styled.span`
     text-align: end;

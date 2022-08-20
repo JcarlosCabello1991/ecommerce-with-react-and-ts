@@ -14,6 +14,13 @@ const DivContainerChart = styled.div`
     margin-left: -27rem;
     margin-top: 1.95rem;
     box-shadow: 0.625rem 0.625rem 0.625rem 0.9375rem rgb(0 0 0 / 5%);
+    @media (max-width:400px){
+        width: 24rem;
+        margin-left: -22rem;
+        margin-top: 1.95rem;
+        position: fixed;
+        height: 80%;
+    }
 
 `
 const DivChart = styled.div`
@@ -35,6 +42,9 @@ const FielSetProduct = styled.fieldset`
     border: 0.1px solid #ccc;
     gap: 1rem;
     width: 22rem;
+    @media (max-width:400px){
+        width: 19rem;
+    }
 `
 const ImageProduct = styled.img`
     height: 5rem;
