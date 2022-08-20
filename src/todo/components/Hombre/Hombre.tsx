@@ -10,8 +10,8 @@ const DivFooterCard = styled.div`
     justify-content: space-between;
 `
 const Div = styled.div`
-display: grid;
-grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));//4,1fr
+display: grid;//4,1fr
+grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
 justify-content: center;
 align-items: center;
 width: 80%;
