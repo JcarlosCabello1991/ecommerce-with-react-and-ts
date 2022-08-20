@@ -4,7 +4,7 @@ import { products, ticket, user, userDataLogin } from "../interfaces/interfaces"
 export async function addNewUser(userData: user){
     const user = userData;
     
-    const request = await fetch("http://localhost:5000/users",{
+    const request = await fetch("https://reat-ecommerce-server.herokuapp.com/users",{//http://localhost:5000/users
         method: 'POST',
         headers:{
             'Content-Type':'application/json'
@@ -17,7 +17,7 @@ export async function addNewUser(userData: user){
 
 export async function getId():Promise<number>{
 
-    const response = await fetch("http://localhost:5000/users");
+    const response = await fetch("https://reat-ecommerce-server.herokuapp.com/users");//http://localhost:5000/users
     const data = await response.json();
     
     return (data.length);
@@ -26,7 +26,7 @@ export async function getId():Promise<number>{
 export async function checkUserLogin(userData: userDataLogin):Promise<boolean>{
     let str = false;
 
-    const response = await fetch("http://localhost:5000/users");
+    const response = await fetch("https://reat-ecommerce-server.herokuapp.com/users");//http://localhost:5000/users
     const data = await response.json();
 
     const exist = data.find((user: { email: string | any; password: string; }) => user.email == userData.email && user.password == userData.password);
@@ -39,7 +39,7 @@ export async function checkUserLogin(userData: userDataLogin):Promise<boolean>{
 }
 
 export async function getUserData(userData : userDataLogin): Promise<user>{
-    const response = await fetch("http://localhost:5000/users");
+    const response = await fetch("https://reat-ecommerce-server.herokuapp.com/users");//http://localhost:5000/users
     const data = await response.json();
     
     const exist = data.find((user: { email: string | any; password: string; }) => user.email == userData.email && user.password == userData.password);
@@ -55,7 +55,7 @@ export async function addTicket(id:number, cart:Array<products[]>){
     const year = date.getFullYear();
     const code = (Math.random()*1000000).toString();
 
-    const response = await fetch(`http://localhost:5000/users/${id}`)
+    const response = await fetch(`https://reat-ecommerce-server.herokuapp.com/users/${id}`)//http://localhost:5000/users/${id}
     const user = await response.json();
 
     let arrayProductsTicket:Array<products[]> = [];
@@ -67,7 +67,7 @@ export async function addTicket(id:number, cart:Array<products[]>){
     const ticket = {code: code, date: `${day}/${month}/${year}`, ticket: arrayProductsTicket}
     user.tickets.push(ticket);
     
-    const newResponse = await fetch(`http://localhost:5000/users/${id}`,{
+    const newResponse = await fetch(`https://reat-ecommerce-server.herokuapp.com/users/${id}`,{//http://localhost:5000/users/${id}
         method:'PATCH',
         headers:{
             'Content-Type':'application/json'
@@ -87,7 +87,7 @@ export async function updateUserData(data: { name: string; lastName: string; ema
     if(data.password != user.password && data.password != "") user.password = data.password
     if(data.confirm_password != user.confirm_password && data.confirm_password != "") user.confirm_password = data.confirm_password
 
-    const response = await fetch(`http://localhost:5000/users/${user.id}`,{
+    const response = await fetch(`https://reat-ecommerce-server.herokuapp.com/users/${user.id}`,{//http://localhost:5000/users/${user.id}
         method:'PATCH',
         headers:{
             'Content-Type':'application/json'
@@ -101,7 +101,7 @@ export async function getTickets(user:user):Promise<Array<ticket>>{
     console.log(user);
     
     let num = 0;
-    const response = await fetch(`http://localhost:5000/users/${user.id}`)
+    const response = await fetch(`https://reat-ecommerce-server.herokuapp.com/users/${user.id}`)//http://localhost:5000/users/${user.id}
     const data = await response.json();
     // num = data.tickets.length;
     // console.log(num);
@@ -111,7 +111,7 @@ export async function getTickets(user:user):Promise<Array<ticket>>{
 
 export async function updateForgotPassword(data:{email:string, password:string, confirm_password:string}):Promise<user | undefined>{
     let rtn = undefined;
-    const response = await fetch("http://localhost:5000/users");
+    const response = await fetch("https://reat-ecommerce-server.herokuapp.com/users");//http://localhost:5000/users
     const users = await response.json();
 
     const exist = users.find((user: { email: string; }) => user.email == data.email);
@@ -120,7 +120,7 @@ export async function updateForgotPassword(data:{email:string, password:string, 
     if(exist != undefined){
         exist.password = data.password;
         exist.confirm_password = data.confirm_password;
-        const newResponse = await fetch(`http://localhost:5000/users/${exist.id}`,{
+        const newResponse = await fetch(`https://reat-ecommerce-server.herokuapp.com/users/${exist.id}`,{//http://localhost:5000/users/${exist.id}
             method:'PATCH',
             headers:{
                 'Content-Type':'application/json'

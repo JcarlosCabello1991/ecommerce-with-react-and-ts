@@ -2,13 +2,13 @@ import { log } from "console";
 import { products } from "../interfaces/interfaces";
 
 export async function getProducts():Promise<Array<products>> {
-    const response = await fetch("http://localhost:5000/products")
+    const response = await fetch("https://reat-ecommerce-server.herokuapp.com/products")//http://localhost:5000/products
     const data = await response.json();
     return data;
 }
 
 export async function getProduct(id:any):Promise<Array<products>> {
-    const response = await fetch(`http://localhost:5000/products/${id}`)
+    const response = await fetch(`https://reat-ecommerce-server.herokuapp.com/products/${id}`)//http://localhost:5000/products/${id}
     const data = await response.json();
     let array = [];
     array.push(data);
@@ -17,7 +17,7 @@ export async function getProduct(id:any):Promise<Array<products>> {
 
 export async function uploadProduct(product: any):Promise<string>{
     
-    const response = await fetch(`http://localhost:5000/products`);
+    const response = await fetch(`https://reat-ecommerce-server.herokuapp.com/products`);//http://localhost:5000/products
     const data = await response.json();
 
     product.id = data.length+1;
@@ -31,7 +31,7 @@ export async function uploadProduct(product: any):Promise<string>{
 
     product.sizes = sizes;
     
-    const update = await fetch(`http://localhost:5000/products`,{
+    const update = await fetch(`https://reat-ecommerce-server.herokuapp.com/products`,{//http://localhost:5000/products
         method:'POST',
         headers:{
             'Content-Type':'application/json'
@@ -43,7 +43,7 @@ export async function uploadProduct(product: any):Promise<string>{
 
 export async function deleteProduct(id:number):Promise<string>{
 
-    const newResponse = await fetch(`http://localhost:5000/products/${id}`,{
+    const newResponse = await fetch(`https://reat-ecommerce-server.herokuapp.com/products/${id}`,{//http://localhost:5000/products/${id}
         method:'DELETE',
         headers:{
             'Content-Type':'application/json'
@@ -64,7 +64,7 @@ export async function editProductProps(product: any):Promise<string>{
     
     product.sizes = array;
 
-    const request = await fetch(`http://localhost:5000/products/${id}`)
+    const request = await fetch(`https://reat-ecommerce-server.herokuapp.com/products/${id}`)//http://localhost:5000/products/${id}
     const data = await request.json();
 
     if(product.img == "") product.img = data.img;
@@ -72,7 +72,7 @@ export async function editProductProps(product: any):Promise<string>{
     product.images = data.images;
 
 
-    const response = await fetch(`http://localhost:5000/products/${id}`,{
+    const response = await fetch(`https://reat-ecommerce-server.herokuapp.com/products/${id}`,{//http://localhost:5000/products/${id}
         method:'PATCH',
         headers:{
             'Content-Type':'application/json'
