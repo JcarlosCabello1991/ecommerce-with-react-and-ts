@@ -9,15 +9,12 @@ const DivFooterCard = styled.div`
     display: flex;
     justify-content: space-between;
 `
-const Div = styled.div`
-display: grid;
-grid-template-columns: repeat(4,1fr);
+const DivCard = styled.div`
+display: flex;
+flex-direction: column;
+width: fit-content;
 justify-content: center;
 align-items: center;
-width: 80%;
-padding-left: 10%;
-padding-right: 10%;
-margin-bottom: 2rem;
 
 &.card-product{
     display: flex;
@@ -37,7 +34,10 @@ const Span = styled.span`
 `
 const Image = styled.img`
     &.img-product-dashboard{
-        height: 20rem;
+        width: 100%;
+        height: auto;
+        max-height: 20rem;
+        object-fit: cover;
         border-radius: 15px;
     }
 `
@@ -52,7 +52,7 @@ function Mujer() {
             if(product.gender == "woman"){
                 return(
                     <>
-                    <Div key={`${product.id}-cardContainer`} className="card-product">
+                    <DivCard key={`${product.id}-cardContainer`} className="card-product">
                         <Link to={`/Product/${product.id}`} key={`${product.id}-link`}>
                             <Image key={product.id} className="img-product-dashboard" src={product.img}/>
                         </Link>
@@ -60,7 +60,7 @@ function Mujer() {
                             <Span key={`${product.id}-title`} className="title-product">{product.title}</Span>
                             <Span key={`${product.id}-price`} className="price-product">{product.price}€</Span>
                         </DivFooterCard>
-                    </Div>
+                    </DivCard>
                     <Outlet/>
                     </>
                 )

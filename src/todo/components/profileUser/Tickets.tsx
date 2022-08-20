@@ -11,6 +11,7 @@ const DivContainerPersonal = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: fit-content;
 `
 const SpanHello = styled.span`
     display: flex;
@@ -30,6 +31,9 @@ const DivDate = styled.div`
         background-color: #ab8853;
         color: black;
     }
+    @media (max-width:825px){
+        width: 15rem;
+    }
 `
 const SpanDate = styled.span`
 margin-left: 1.5rem;
@@ -47,8 +51,8 @@ const DivContainerTicket = styled.div`
     }
 `
 const DivContainerTickets = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
 `
 const SpanLoad = styled.span`

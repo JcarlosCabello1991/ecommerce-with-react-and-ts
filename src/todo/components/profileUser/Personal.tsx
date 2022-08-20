@@ -11,16 +11,25 @@ const DivContainerPersonal = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    @media(max-width:800px) {
+        padding-left: 0.5rem;
+    }
 `
 
 const SpanHello = styled.span`
     font-size: 1.5rem;
+    @media(max-width:800px) {
+        font-size: 1rem;
+    }
 `
 const Input = styled.input`
     height: 2rem;
     border-radius: 0.125rem;
     border: 1px solid #ccc;
     width: 15rem;
+    @media(max-width:800px) {
+        width: 10rem;
+    }
 `
 const Button = styled.button`
     width: 100%;
@@ -43,6 +52,10 @@ const Form = styled.form`
     align-items: flex-start;
     margin-top: 1rem;
     gap: 1rem;
+    @media(max-width:800px) {
+        display: flex;
+        flex-direction: column;
+    }
 `
 const DivColumn1 = styled.div`
     display: flex;
@@ -58,6 +71,9 @@ const DivColumn2 = styled.div`
     margin-left: 5rem;
     gap: 1rem;
     margin-top: 1rem;
+    @media(max-width:800px) {
+        margin-left: 0;
+    }
 `
 function Personal({setPage}:{setPage:React.Dispatch<React.SetStateAction<string>>}) {
 

@@ -31,8 +31,8 @@ function DivHero() {
   return (
     <DivMainHero>
         <ImgTop src='../../../../images/bannerPuma.webp'/>
-        <SpanTopModel>Modelo destacado</SpanTopModel>
-        <ButtonTopModel onClick={() => {navigate("/Product/104")}}>Comprar ahora</ButtonTopModel>
+        {/* <SpanTopModel>Modelo destacado</SpanTopModel>
+        <ButtonTopModel onClick={() => {navigate("/Product/104")}}>Comprar ahora</ButtonTopModel> */}
     </DivMainHero>
   )
 }

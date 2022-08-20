@@ -18,17 +18,11 @@ const Image = styled.img`
   const Div = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
-    justify-content: center;
-    align-items: center;
+    justify-items: center;
     width: 80%;
     padding-left: 10%;
     padding-right: 10%;
     margin-bottom: 2rem;
-
-    &.card-product{
-        display: flex;
-        flex-direction: column;
-    }
   `
 
     const Span = styled.span`
@@ -45,7 +39,6 @@ const Image = styled.img`
     const H2 = styled.h2`
         text-align: left;
         margin-left: 12vw;
-        font-size: 1.3vw;
     `
 
     const DivFooterCard = styled.div`

@@ -7,25 +7,26 @@ import FooterChart from './FooterChart'
 
 const DivContainerChart = styled.div`
     width: 33.125rem;
-    height: 100%;
+    height: 80%;
     z-index: 1600;
     background-color: white;
     position: fixed;
-    margin-left: 80vw;
+    margin-left: -27rem;
+    margin-top: 1.95rem;
     box-shadow: 0.625rem 0.625rem 0.625rem 0.9375rem rgb(0 0 0 / 5%);
 
 `
 const DivChart = styled.div`
     position: absolute;
     text-align: center;
-    width: 100%;
+    width: 80%;
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: 1rem;
 `
 const DivHeader = styled.div`
     display: flex;
-    width: 90%;
+    width: 100%;
     justify-content: space-between;
 `
 const FielSetProduct = styled.fieldset`
@@ -94,7 +95,7 @@ const SpanPrice = styled.span`
     text-align: end;
 `
 const DivBtnBuy = styled.div`
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 1rem;
@@ -114,7 +115,7 @@ const DivFieldSetScroll = styled.div`
     overflow-y: scroll;
 `
 const IconClose = styled.i`
-    margin-right: 5rem;
+    margin-right: 0.1rem;
 `
 function Chart({chart, setChart, count, setCount, contentCart, setContentCart, setShowChart}:{chart:boolean, setChart:React.Dispatch<React.SetStateAction<boolean>>,count:number, setCount: React.Dispatch<React.SetStateAction<number>>,
 contentCart: Array<products>, setContentCart: React.Dispatch<React.SetStateAction<products[]>>, setShowChart: React.Dispatch<React.SetStateAction<boolean>>}) {

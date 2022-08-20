@@ -14,6 +14,10 @@ const DivContainersuggestedProducts = styled.div`
     gap: 1rem;
     justify-content: center;
     align-items: center;
+    @media (max-width: 1330px){
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(10rem, 1fr));
+    }
 `
 const SuggestedImg = styled.img`
     height: 10rem;

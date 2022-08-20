@@ -6,12 +6,13 @@ import { Link } from 'react-router-dom'
 import { substrackFavourite } from '../../favourites/favourites'
 
 const DivContainerChart = styled.div`
-    width: 33.125rem;
-    height: 100%;
+    width: 30rem;
+    height: 80%;
     z-index: 1600;
     background-color: white;
     position: fixed;
-    margin-left: 77vw;
+    margin-left: -27rem;
+    margin-top: 1.95rem;
     box-shadow: 0.625rem 0.625rem 0.625rem 0.9375rem rgb(0 0 0 / 5%);
 
 `

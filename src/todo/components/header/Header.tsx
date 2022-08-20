@@ -16,6 +16,7 @@ background-color: #fee0a9;
 const Nav = styled.nav`
     background-color: black;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding-right: 1vw;
     position: sticky;
@@ -35,6 +36,20 @@ const Ul = styled.ul`
     display: flex;
     gap: 2rem;
     font-weight: bold;
+    @media (max-width:930px) {
+        display: none;
+        &.hide{
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            justify-content: center;
+            align-items: center;
+            margin-top: 24rem;
+            background-color: black;
+            padding-left: 1rem;
+            width: 10rem;
+        }        
+    }
 `
 const Li = styled.li`
     color: white;
@@ -52,6 +67,9 @@ const UlOffers = styled.ul`
     list-style: none;
     gap: 0.5rem;
     margin-top: 0.3rem;
+    @media (max-width: 450px) {
+        display: none;
+    }
 `
 
 const LiOffers = styled.li`
@@ -124,7 +142,23 @@ const SpanGreenLogin = styled.span`
     justify-content: center;
     align-items: center;
 `
-
+const IconMenu = styled.i`
+    &.hide{
+        display: none;
+    }
+    @media (max-width:930px) {
+        &.hide{
+            display: flex;
+            margin-top: 7px;
+        }
+        color: white;
+    }
+`
+const Form = styled.form`
+    @media (max-width: 390px) {
+        display: none;
+    }
+`
 function Header() {
 
   const globalContext = useContext<contextProps>(TodoContext);
@@ -177,6 +211,10 @@ function Header() {
     toSearch(newValues);
   }
   
+  const handleCategories = () => {
+    const list = document.getElementById("menu__list")?.classList.toggle("hide")
+  }
+
   return (
       <>
         <HeaderMessage id="header-content">Envíos GRATIS para pedidos superiores a 50€</HeaderMessage>
@@ -184,7 +222,8 @@ function Header() {
               <Section>
                   {/* logo y paginas */}
                   <Link to="/"><Logo src="../../../../images/pumaLogo.png" /></Link>
-                  <Ul>
+                  <IconMenu className="fa-solid fa-bars hide" onClick={handleCategories}></IconMenu>
+                  <Ul id='menu__list'>
                       <Link to="/mujer" style={{ textDecoration: 'none' }}><Li>Mujer</Li></Link>
                       <Link to="/hombre" style={{ textDecoration: 'none' }}><Li>Hombre</Li></Link>
                       <Li>Niño</Li>
@@ -196,12 +235,12 @@ function Header() {
               <Section>
                   {/* Buscador, favs, carrito y login */}
                   <DivSearch>
-                    <form>
+                    <Form>
                         <SpanIconSearch>
                             <Icon className="fa-solid fa-magnifying-glass lupin"></Icon>
                         </SpanIconSearch>
                         <Input name='titleSearch' type="text" value={search.titleSearch} onChange={handleChange} placeholder="        Search"/>
-                    </form>
+                    </Form>
                     <DivCounterChart>
                         <Icon className="fa-solid fa-heart" onClick={() => {setShowFavs(!showFavs)}}></Icon>
                         {favs.length != 0 ? <SpanCounter>{favs.length}</SpanCounter> : <span></span>}
@@ -220,12 +259,15 @@ function Header() {
                             }}}>
                         </Icon>
                         {globalContext.value.auth == true && <SpanGreenLogin></SpanGreenLogin>}
+                        {showActionsUser == true && <UserActions/>}
+                        {showFormLogin && <FormLogin />}
+
+                        {showChart && <Chart chart={showChart} setChart={setShowChart} count={count} setCount={setCount} contentCart={contentCart} setContentCart={setContentCart} setShowChart={setShowChart}/>}
+                        {showFavs && <Favourites favs={showFavs} setFavs={setShowFavs} count={count} setCount={setCount} contentFavs={contentFavs} setContentFavs={setContentFavs} setShowFavs={setShowFavs}/>}
                      </DivCounterChart>
                   </DivSearch>
               </Section>
           </Nav>
-          {showActionsUser == true && <UserActions/>}
-          {showFormLogin && <FormLogin />}
         <MainOffers>
             <span><strong>20% DE DESCUENTO EN TODO*</strong></span>
             <span>CÓDIGO: <strong>PUMA20</strong></span>
@@ -237,8 +279,6 @@ function Header() {
                 <LiOffers>COMPRAR PARA NIÑO</LiOffers>
             </UlOffers>
         </MainOffers>
-        {showChart && <Chart chart={showChart} setChart={setShowChart} count={count} setCount={setCount} contentCart={contentCart} setContentCart={setContentCart} setShowChart={setShowChart}/>}
-        {showFavs && <Favourites favs={showFavs} setFavs={setShowFavs} count={count} setCount={setCount} contentFavs={contentFavs} setContentFavs={setContentFavs} setShowFavs={setShowFavs}/>}
       </>
   )
 }

@@ -10,19 +10,30 @@ const ContainerSections = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    justify-items: center;
     gap: 2rem;
+    @media (max-width:1600px){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 `
 const SectionCreate = styled.section`
     width: 25rem;
-    margin-left: 10rem;
     margin-top: 2rem;
 `
 const SectionDelete = styled.section`
     margin-top: 2rem;
+    @media (max-width:1600px){
+        width: 55rem;
+    }
+    @media (max-width:1600px){
+        width: 25rem;
+    }
 `
 const SectionUpdate = styled.section`
     margin-top: 2rem;
-    margin-left: 10rem;
     width: 25rem;
 `
 const Form = styled.form`
@@ -31,6 +42,12 @@ const Form = styled.form`
     gap: 1rem;
     width: 25rem;
     margin-top: 2rem;
+    @media (max-width:1600px){
+        display: none;
+        &.hide{
+            display: flex;
+        }
+    }
 `
 const Input = styled.input`
     height: 2rem;
@@ -57,6 +74,13 @@ const Div = styled.div`
     margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(3,1fr);
+    @media (max-width:1600px){
+        display: none;
+        &.hide{
+            display: flex;
+            flex-direction: column;
+        }
+    }
 `
 const Product = styled.div`
     display: flex;
@@ -87,6 +111,13 @@ const DialogEdit = styled.dialog`
 `
 const DivProductsEdition = styled.div`
     margin-top: 1rem;
+    @media (max-width:1600px){
+        display: none;
+        &.hide{
+        display: flex;
+        flex-direction: column;
+        }
+    }
 `
 
 const DivTitleSection = styled.div`
@@ -97,6 +128,19 @@ const DivTitleSection = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 0.125rem;
+`
+const DivTitleSectionDelete = styled.div`
+    background-color: black;
+    color: white;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.125rem;
+    width: 55rem;
+    @media (max-width: 1600px){
+        width: 25rem;
+    }
 `
 function CeoPage() {
   //Aqui vamos a tener 3 secciones
@@ -190,6 +234,11 @@ function CeoPage() {
     })
     document.getElementById(`dialogEdit-${id}`)?.classList.toggle("hide");
   }
+
+  const handleCreate = (id:string) => {
+    document.getElementById(id)?.classList.toggle("hide");
+  }
+
   if(context.value.auth == true){
   return (
     <>
@@ -197,8 +246,8 @@ function CeoPage() {
         <ContainerSections>
             <DivContainer>
                 <SectionCreate>
-                    <DivTitleSection><strong>Create Product</strong></DivTitleSection>
-                    <Form onSubmit={(e) => {createProduct(e)}}>
+                    <DivTitleSection onClick={() => handleCreate("form-create")}><strong>Create Product</strong></DivTitleSection>
+                    <Form id="form-create" onSubmit={(e) => {createProduct(e)}}>
                         <Input type="text" name="title" value={product.title} onChange={(e) => {changeInput(e)}} placeholder='Title product' required/>
                         <Input type="number" name="price" value={product.price} onChange={(e) => {changeInput(e)}} placeholder='price' required/>
                         <Input type="text" name="gender" value={product.gender} onChange={(e) => {changeInput(e)}} placeholder='gender' required/>
@@ -208,8 +257,8 @@ function CeoPage() {
                     </Form>
                 </SectionCreate>
                 <SectionUpdate>
-                <DivTitleSection><strong>Edit Product</strong></DivTitleSection>
-                <DivProductsEdition>
+                <DivTitleSection onClick={() => handleCreate("edit-product")}><strong>Edit Product</strong></DivTitleSection>
+                <DivProductsEdition id="edit-product">
                 {
                     context.productsToShow.map(element => {
                         return(
@@ -240,8 +289,8 @@ function CeoPage() {
                 </SectionUpdate>
             </DivContainer>
             <SectionDelete>
-            <DivTitleSection><strong>Delete Product</strong></DivTitleSection>
-                <Div>
+            <DivTitleSectionDelete onClick={() => handleCreate("delete-section")}><strong>Delete Product</strong></DivTitleSectionDelete>
+                <Div id="delete-section">
                     {
                         context.productsToShow.map(product => {
                             return(

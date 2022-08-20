@@ -15,25 +15,66 @@ const DivContainer = styled.div`
 const SectionMainProduct = styled.section`
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: center;
     padding-left: 5rem;
     padding-right: 5rem;
     margin-top: 1rem;
     gap: 3rem;
+    @media (max-width: 890px){
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+    @media (max-width:760px){
+        display: flex;
+        flex-direction: column;
+    }
 `
 const DivThumbnailsProduct = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    @media (max-width: 1520px){
+        height: 32rem;
+    }
+    @media (max-width: 1330px){
+        min-height: 17rem;
+    }
+    @media (max-width: 890px){
+        width: fit-content;
+        height: fit-content;
+    }
 `
 const ImgThumb = styled.img`
     height: 15rem;
+    @media (max-width: 1520px){
+        height: 10rem;
+    }
+    @media (max-width: 1330px){
+        min-height: 5rem;
+    }
+    @media (max-width: 890px){
+        width: 10rem;
+        height: 10rem;
+    }
 `
 const DivMainImage = styled.div`
     height: 47rem;
+    @media (max-width: 1520px){
+        height: 32rem;
+    }
+    @media (max-width: 1330px){
+        height: 17rem;
+    }
 `
 const MainImage = styled.img`
     height: 47rem;
+    @media (max-width: 1520px){
+        height: 32rem;
+    }
+    @media (max-width: 1330px){
+        height: 17rem;
+    }
 `
 
 const DivProductInfo = styled.div`
@@ -41,29 +82,47 @@ const DivProductInfo = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    @media (max-width:760px){
+        padding-left: 3rem;
+    }
 `
 
 const SpanTitleProduct = styled.span`
     font-size: 2rem;
     width: 25rem;
     text-align: start;
+    @media (max-width: 1330px){
+        font-size: 1rem;
+    }
 `
 const SpanPriceProduct = styled.span`
     margin-top: 2rem;
     font-size: 1.5rem;
+    @media (max-width: 1330px){
+        font-size: 1rem;
+    }
 `
 const SpanGenderProduct = styled.span`
     font-size: 1.5rem;
     margin-top: 2rem;
+    @media (max-width: 1330px){
+        font-size: 1rem;
+    }
 `
 const SpanGender = styled.span`
     margin-left: 1.6rem;
+    @media (max-width: 1330px){
+        margin-left: 2.3rem;
+    }
 `
 const DivSizesProduct = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 0.5rem;
     width: 77%;
+    @media (max-width: 1330px){
+        width: 58%;
+    }
 `
 const DivAddToCart = styled.div`
     display:  flex;
@@ -71,6 +130,9 @@ const DivAddToCart = styled.div`
     height: 2rem;
     width: 100%;
     margin-top: 1rem;
+    @media (max-width: 1330px){
+        width: 80%;
+    }
 `
 const ButtonAdd = styled.button`
     background-color: #ae946d;
@@ -80,6 +142,11 @@ const ButtonAdd = styled.button`
     height: 2rem;
     line-height: 2rem;
     width: 55%;
+
+    &:hover{
+        background-color: #cfae7c;
+        color: black;
+    }
 `
 const DivCounter = styled.div`
     /* display: flex; */
@@ -154,6 +221,9 @@ const SpanSize = styled.span`
 
     &.selected{
         background-color: #bffcbf;
+    }
+    @media (max-width: 1330px){
+        font-size: 1rem;
     }
 `
 const SpanPrice = styled.span`

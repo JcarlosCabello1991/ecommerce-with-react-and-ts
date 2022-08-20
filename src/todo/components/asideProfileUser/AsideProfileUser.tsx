@@ -5,6 +5,9 @@ const Aside = styled.aside`
     width: 10rem;
     height: 100vh;
     background-color: black;
+    @media(max-width:800px) {
+        width: 7rem;
+    }
 `
 
 const Ul = styled.ul`

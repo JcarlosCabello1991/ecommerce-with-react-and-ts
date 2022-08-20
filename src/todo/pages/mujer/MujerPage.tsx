@@ -10,7 +10,7 @@ import TodoProvider from '../../context/TodoProvider'
 
 const DivContainerMujer = styled.div`
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
   justify-content: center;
   align-items: center;
   width: 80%;

@@ -11,7 +11,9 @@ const DivForm = styled.div`
     padding-bottom: 1.5rem;
     z-index: 1600;
     background-color: #fff;
-    margin-left: 89vw;//
+    position: absolute;
+    margin-top: 1.95rem;
+    margin-left:-12.9rem;
     box-shadow: 0.625rem 0.625rem 0.625rem 0.9375rem rgb(0 0 0 / 5%);
     position: fixed;
     border-radius: 0.125rem;
